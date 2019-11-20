@@ -23,26 +23,61 @@ namespace leeftijd_inklas
     {
         static void Main(string[] args)
         {
-        }{//Declaratie
-            DateTime geboortedatum; string naam;    //input
+            //DECLARATIES
+            //inputvariabelen
+            string naam, geboortedatumInvoer;
 
-        //input
-        //Vragen naar de naam
-        Console.Write("wat is jouw naam?: ");
+            //processingvariabelen
+            DateTime geboortedatum, huidigeDatum;
+            ushort geboortedatums, huidigdatums, geboortejaar, huidigjaartal;
+            byte leeftijd1, leeftijd2, leeftijd3;
+
+
+
+            //outputvariabelen
+            string uitvoer;
+            //INPUT
+            // VRAAG naam
+            Console.Write("Geef uw naam in, a.u.b.: ");
             naam = Console.ReadLine();
+            // VRAAG geboortedatum
+            Console.Write("Geef uw geboortedatum, a.u.b.: ");
+            geboortedatumInvoer = Console.ReadLine();
 
-            //vragen naar zijn geboortedatum
-            Console.Write("wat is jouw geboortedatum?: ");
-            geboortedatum = Convert.ToDateTime(Console.ReadLine();
+            //PROCESSING
+            // Parsen van input
+            geboortedatum = DateTime.Parse(geboortedatumInvoer);
 
-            //output
-            //Het aantal jaar dat je oud bent
+            // BEREKEN huidigJaartal (huidigeDatum.Year)
+            huidigeDatum = DateTime.Today;
+            huidigdatums = (ushort)huidigeDatum.Day;
+            huidigjaartal = (ushort)huidigeDatum.Year;
+
+            // BEREKEN geboortejaar (geboortedatum.Year)
+            geboortedatums = (ushort)geboortedatum.Day;
+            geboortejaar = (ushort)geboortedatum.Year;
+
+            // BEREKEN leeftijd (huidigJaartal - geboortejaar)
+            leeftijd1 = (byte)((int)huidigdatums - (int)geboortedatums);
+            leeftijd2 = (byte)((int)huidigjaartal - (int)geboortejaar);
+
+            if (huidigdatums < geboortedatums)
+            {
+                leeftijd3 = (byte)(leeftijd2 - 1);
+            }
+
+            // BEREKEN uitvoer (= "<naam>, u bent <leeftijd> jaar oud.")
+            leeftijd3 = $"{naam}, u bent {leeftijd2}jaar.";
+
+
+            //OUTPUT
+            // TOON uitvoer
+            Console.WriteLine(leeftijd3);
+
+            //Wachten...
             Console.WriteLine();
-            Console.WriteLine("je geboortedatum " + geboortedatum.ToLongDateString()+ ".");
-            Console.WriteLine(naam + " je bent al " + DateTime.Now.Subtract(geboortedatum).Days.ToString()
-            + "Jaren oud. ");
-            Console.WriteLine();
+            Console.Write("Druk op Enter om af te sluiten... ");
             Console.ReadLine();
-
+        }
     }
 }
