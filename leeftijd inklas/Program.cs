@@ -63,16 +63,16 @@ namespace leeftijd_inklas
 
             if (huidigdatums < geboortedatums)
             {
-                leeftijd3 = (byte)(leeftijd2 - 1);
+                leeftijd2 = (byte)(leeftijd2 - 1);
             }
 
             // BEREKEN uitvoer (= "<naam>, u bent <leeftijd> jaar oud.")
-            leeftijd3 = $"{naam}, u bent {leeftijd2}jaar.";
+            uitvoer = $"{naam}, u bent {leeftijd2}jaar en{leeftijd1} dagen oud.";
 
 
             //OUTPUT
             // TOON uitvoer
-            Console.WriteLine(leeftijd3);
+            Console.WriteLine(uitvoer);
 
             //Wachten...
             Console.WriteLine();
